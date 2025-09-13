@@ -1,7 +1,11 @@
 .auth-login {
-    width: 500px;
+    width: 450px;
     height: 100dvh;
     background-color: #323232;
+}
+
+.logo-container {
+    display: none;
 }
 
 .labels-login-container {
@@ -10,16 +14,44 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    gap: 8px;
+    gap: 16px;
+    h3 {
+        color: #fff;
+        margin: 0 16px;
+    }
     input {
-        padding: 4px 8px;
+        padding: 12px;
         border-radius: 8px;
+        margin: 0 32px;
+        background-color: #ffffff10;
+        &::placeholder {
+            color: #fff;
+        }
+
+        &:focus {
+            transition: 0.3s color;
+            &::placeholder {
+                color: transparent;
+            }
+        }
     }
 }
 
 .btn-submit-login {
-    padding: 4px 8px;
-    font-size: 1em;
+    padding: 12px;
+    margin: 0 32px;
     border-radius: 8px;
+    background-color: #3D33D5;
+    color: #fff;
+}
 
+.register-text {
+    display: flex;
+    justify-content: right;
+    a {
+        text-decoration: underline;
+        color: #eeeeee;
+        font-size: 0.75rem;
+        margin: 0 32px;
+    }
 }
