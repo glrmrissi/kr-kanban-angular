@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
-
+import { RouterLink } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-aside-login',
-  imports: [],
+  imports: [RouterLink, RouterOutlet],
   templateUrl: './aside-login.html',
-  styleUrl: './aside-login.scss'
+  styleUrls: ['./aside-login.scss']
 })
 export class AsideLogin {
-
+  clickLogin() {
+    console.log('login');
+  }
 }
