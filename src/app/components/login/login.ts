@@ -3,9 +3,10 @@ import { AsideLogin } from './aside-login/aside-login';
 
 @Component({
   selector: 'app-login',
+  standalone: true,
   imports: [AsideLogin],
   templateUrl: './login.html',
-  styleUrl: './login.scss'
+  styleUrls: ['./login.scss']
 })
 export class Login {
 
