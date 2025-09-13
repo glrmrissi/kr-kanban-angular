@@ -1,27 +1,29 @@
 <aside class="auth-login">
-    <div class="logo-container">
-        <svg width="148" height="148" viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_2_41)">
-                <path
-                    d="M31.2727 120V26.9091H42.5455V73.0909H43.6364L85.4545 26.9091H100.182L61.0909 68.9091L100.182 120H86.5455L54.1818 76.7273L42.5455 89.8182V120H31.2727Z"
-                    fill="black" />
-                <path
-                    d="M124 124.727H30.9091L30.9091 93.2727C30.9091 86 32.1515 80.0303 34.6364 75.3636C37.0909 70.697 40.4697 67.2424 44.7727 65C49.0758 62.7576 53.9697 61.6364 59.4545 61.6364C64.9394 61.6364 69.803 62.7576 74.0455 65C78.2879 67.2424 81.6212 70.6818 84.0455 75.3182C86.4394 79.9545 87.6364 85.8788 87.6364 93.0909V118.545H77.4545V93.4545C77.4545 88.4848 76.7273 84.4848 75.2727 81.4545C73.8182 78.3939 71.7576 76.1818 69.0909 74.8182C66.3939 73.4242 63.1818 72.7273 59.4545 72.7273C55.7273 72.7273 52.4697 73.4242 49.6818 74.8182C46.8939 76.2121 44.7424 78.4394 43.2273 81.5C41.6818 84.5606 40.9091 88.6061 40.9091 93.6364V113.455H124V124.727ZM82.1818 80.9091L124 58V71.0909L82.1818 93.6364V80.9091Z"
-                    fill="#3D33D5" />
-            </g>
-            <defs>
-                <clipPath id="clip0_2_41">
-                    <rect width="148" height="148" fill="white" />
-                </clipPath>
-            </defs>
-        </svg>
-    </div>
     <section class="labels-login-container">
-        <h3>Acess your account:</h3>
-        <input type="email" name="login-email" id="">
-        <input type="password" name="login-password" id="">
-        <a href="#">Register?</a>
-        <button type="submit">Log-in</button>
+        <div class="logo-container">
+            <svg width="60" height="60" viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_2_41)">
+                    <path
+                        d="M31.2727 120V26.9091H42.5455V73.0909H43.6364L85.4545 26.9091H100.182L61.0909 68.9091L100.182 120H86.5455L54.1818 76.7273L42.5455 89.8182V120H31.2727Z"
+                        fill="black" />
+                    <path
+                        d="M124 124.727H30.9091L30.9091 93.2727C30.9091 86 32.1515 80.0303 34.6364 75.3636C37.0909 70.697 40.4697 67.2424 44.7727 65C49.0758 62.7576 53.9697 61.6364 59.4545 61.6364C64.9394 61.6364 69.803 62.7576 74.0455 65C78.2879 67.2424 81.6212 70.6818 84.0455 75.3182C86.4394 79.9545 87.6364 85.8788 87.6364 93.0909V118.545H77.4545V93.4545C77.4545 88.4848 76.7273 84.4848 75.2727 81.4545C73.8182 78.3939 71.7576 76.1818 69.0909 74.8182C66.3939 73.4242 63.1818 72.7273 59.4545 72.7273C55.7273 72.7273 52.4697 73.4242 49.6818 74.8182C46.8939 76.2121 44.7424 78.4394 43.2273 81.5C41.6818 84.5606 40.9091 88.6061 40.9091 93.6364V113.455H124V124.727ZM82.1818 80.9091L124 58V71.0909L82.1818 93.6364V80.9091Z"
+                        fill="#3D33D5" />
+                </g>
+                <defs>
+                    <clipPath id="clip0_2_41">
+                        <rect width="148" height="148" fill="white" />
+                    </clipPath>
+                </defs>
+            </svg>
+        </div>
+        <h3>Access your account:</h3>
+        <input type="email" name="login-email" id="loginEmail" placeholder="Email">
+        <input type="password" name="login-password" id="loginPassword" placeholder="Password">
+        <button class="btn-submit-login" type="submit" (click)="clickLogin()">Login</button>
+        <span class="register-text">
+            <a routerLink="/register">Register?</a>
+        </span>
     </section>
 </aside>
 <router-outlet />
