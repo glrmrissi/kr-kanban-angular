@@ -1,7 +1,11 @@
 .auth-login {
-    width: 500px;
+    width: 450px;
     height: 100dvh;
     background-color: #323232;
+}
+
+.logo-container {
+    display: none;
 }
 
 .labels-login-container {
@@ -26,6 +30,7 @@
 
         &:focus {
             border: 1px solid #3D33D5;
+
             transition: 0.3s color;
             &::placeholder {
                 color: transparent;
@@ -44,6 +49,7 @@
         background-color: #2b22a8;
         transition: 0.3s background-color;
     }
+
 }
 
 .register-text {
