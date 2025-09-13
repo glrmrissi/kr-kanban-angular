@@ -29,6 +29,8 @@
         }
 
         &:focus {
+            border: 1px solid #3D33D5;
+
             transition: 0.3s color;
             &::placeholder {
                 color: transparent;
@@ -43,6 +45,11 @@
     border-radius: 8px;
     background-color: #3D33D5;
     color: #fff;
+    &:hover {
+        background-color: #2b22a8;
+        transition: 0.3s background-color;
+    }
+
 }
 
 .register-text {
