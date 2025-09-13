@@ -7,5 +7,19 @@
 .labels-login-container {
     display: flex;
     flex-direction: column;
-    padding: 0 32px;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 8px;
+    input {
+        padding: 4px 8px;
+        border-radius: 8px;
+    }
+}
+
+.btn-submit-login {
+    padding: 4px 8px;
+    font-size: 1em;
+    border-radius: 8px;
+
 }
