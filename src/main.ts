@@ -5,9 +5,11 @@ import { App } from './app/app';
 import { Register } from './app/components/register/register';
 import { Login } from './app/components/login/login';
 import { provideHttpClient } from '@angular/common/http';
+import { Home } from './app/components/home/home';
 const routes: Routes = [
   { path: '', component: Login },
   { path: 'register', component: Register },
+  { path: 'home', component: Home },
   { path: '**', redirectTo: '' }
 ];
 
