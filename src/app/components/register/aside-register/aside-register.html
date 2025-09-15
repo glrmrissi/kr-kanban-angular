@@ -18,9 +18,10 @@
             </svg>
         </div>
         <h3>Register your account:</h3>
-        <input type="email" name="login-email" id="loginEmail" placeholder="Email *">
-        <input type="password" name="login-password" id="loginPassword" placeholder="Password *">
-        <input type="password" name="login-password-confirm" id="loginPasswordConfirm" placeholder="Confirm Password *">
+        <input type="text" name="login-name" id="loginName" placeholder="Name *" #loginName>
+        <input type="email" name="login-email" id="loginEmail" placeholder="Email *" #loginEmail>
+        <input type="password" name="login-password" id="loginPassword" placeholder="Password *" #loginPassword>
+        <input type="password" name="login-password-confirm" id="loginPasswordConfirm" placeholder="Confirm Password *" #loginPasswordConfirm>
         <button class="btn-submit-login" type="submit" (click)="clickRegister()">Register</button>
         <span class="register-text">
             <a href="#">Login?</a>
