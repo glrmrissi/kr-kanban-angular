@@ -1,23 +1,24 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-export interface User {
-  id: number;
-  username: string;
+export interface LoginRequest {
   email: string;
   password: string;
 }
 
-@Injectable({
-  providedIn: 'root'
-})
+export interface LoginResponse {
+  token: string;
+  user: { id: number; name: string; email: string };
+}
 
+@Injectable({ providedIn: 'root' })
 export class LoginService {
   private apiUrl = 'http://localhost:3000/users';
 
   constructor(private http: HttpClient) {}
-    getUsers(): Observable<User[]> {
-      return this.http.get<User[]>(this.apiUrl);
-   }
+
+  login(payload: LoginRequest): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, payload);
+  }
 }

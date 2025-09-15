@@ -1,33 +1,32 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { RouterOutlet } from '@angular/router';
-import { LoginService } from '../../../services/login.service';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { LoginService, LoginResponse } from '../../../services/login.service';
+
 @Component({
   selector: 'app-aside-login',
-  imports: [RouterLink, RouterOutlet],
+  standalone: true,
+  imports: [CommonModule, RouterLink, RouterOutlet],
   templateUrl: './aside-login.html',
   styleUrls: ['./aside-login.scss']
 })
 export class AsideLogin {
-  users: any[] = [];
+  errorMessage = '';
 
-  constructor(private loginService: LoginService, private readonly router: Router) { }
+  constructor(
+    private loginService: LoginService,
+    private readonly router: Router
+  ) {}
 
-  clickLogin() {
-    const emailInput = document.getElementById("loginEmail") as HTMLInputElement | null;
-    const passwordInput = document.getElementById("loginPassword") as HTMLInputElement | null;
-    
-    this.loginService.getUsers().subscribe(data => {
-      const res = this.users = data;
-      if (!emailInput || !passwordInput) {
-        console.log('Email or password input not found');
-        return;
-      }
-      const user = res.find(u => u.email === emailInput.value && u.password === passwordInput.value);
-      if (user) {
+  clickLogin(email: string, password: string) {
+    this.loginService.login({ email, password }).subscribe({
+      next: (res: LoginResponse) => {
+        console.log('Login ok', res);
         this.router.navigate(['/home']);
-      } else {
-        console.log('Login failed');
+      },
+      error: (err) => {
+        console.error('Login failed', err);
+        this.errorMessage = 'Invalid email or password';
       }
     });
   }
