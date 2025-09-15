@@ -18,9 +18,9 @@
             </svg>
         </div>
         <h3>Access your account:</h3>
-        <input type="email" name="login-email" id="loginEmail" placeholder="Email">
-        <input type="password" name="login-password" id="loginPassword" placeholder="Password">
-        <button class="btn-submit-login" type="submit" (click)="clickLogin()">Login</button>
+        <input type="email" name="login-email" id="loginEmail" placeholder="Email" #loginEmail>
+        <input type="password" name="login-password" id="loginPassword" placeholder="Password" #loginPassword>
+        <button class="btn-submit-login" type="submit"  (click)="clickLogin(loginEmail.value, loginPassword.value)">Login</button>
         <span class="register-text">
             <a routerLink="/register">Register?</a>
         </span>
