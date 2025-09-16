@@ -18,8 +18,8 @@ export class AsideLogin {
     private readonly router: Router
   ) {}
 
-  clickLogin(name: string, email: string, password: string) {
-    this.loginService.login({ name, email, password }).subscribe({
+  clickLogin(email: string, password: string) {
+    this.loginService.login({ email, password }).subscribe({
       next: (res: LoginResponse) => {
         console.log('Login ok', res);
         this.router.navigate(['/home']);

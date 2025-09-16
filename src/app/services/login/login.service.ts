@@ -3,14 +3,13 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface LoginRequest {
-  name: string;
   email: string;
   password: string;
 }
 
 export interface LoginResponse {
   token: string;
-  user: { id: number; name: string; email: string };
+  user: { id: number; email: string };
 }
 
 @Injectable({ providedIn: 'root' })
