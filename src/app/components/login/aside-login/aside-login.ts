@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoginService, LoginResponse } from '../../../services/login/login.service';
+import { AuthStateService } from '../../../../auth/auth.service';
 
 @Component({
   selector: 'app-aside-login',
@@ -15,13 +16,14 @@ export class AsideLogin {
 
   constructor(
     private loginService: LoginService,
+    private authState: AuthStateService,
     private readonly router: Router
-  ) {}
+  ) { }
 
   clickLogin(email: string, password: string) {
     this.loginService.login({ email, password }).subscribe({
       next: (res: LoginResponse) => {
-        console.log('Login ok', res);
+        this.authState.login(res.accessToken); // guarda no estado global
         this.router.navigate(['/home']);
       },
       error: (err) => {

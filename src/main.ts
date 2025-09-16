@@ -7,10 +7,10 @@ import { Login } from './app/components/login/login';
 import { provideHttpClient } from '@angular/common/http';
 import { Home } from './app/components/home/home';
 const routes: Routes = [
-  { path: '', component: Login },
+  { path: 'login', component: Login },
   { path: 'register', component: Register },
   { path: 'home', component: Home },
-  { path: '**', redirectTo: '' }
+  { path: '**', redirectTo: 'login' }
 ];
 
 bootstrapApplication(App, {
