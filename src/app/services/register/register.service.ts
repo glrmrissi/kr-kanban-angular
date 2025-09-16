@@ -16,7 +16,7 @@ export interface RegisterResponse {
 
 @Injectable({ providedIn: 'root' })
 export class RegisterService {
-  private apiUrl = 'http://localhost:3000/users/register';
+  private apiUrl = 'http://localhost:3000/auth/register';
 
   constructor(private http: HttpClient) {}
 
