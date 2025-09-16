@@ -9,16 +9,16 @@ export interface LoginRequest {
 
 export interface LoginResponse {
   token: string;
-  user: { id: number; name: string; email: string };
+  user: { id: number; email: string };
 }
 
 @Injectable({ providedIn: 'root' })
 export class LoginService {
-  private apiUrl = 'http://localhost:3000/users';
+  private apiUrl = 'http://localhost:3000/auth/login';
 
   constructor(private http: HttpClient) {}
 
   login(payload: LoginRequest): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, payload);
+    return this.http.post<LoginResponse>(`${this.apiUrl}`, payload);
   }
 }

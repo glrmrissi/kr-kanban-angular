@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RegisterService } from '../../../services/register/register.service';
 
 @Component({
   selector: 'app-aside-register',
@@ -7,7 +8,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./aside-register.scss', '../../login/aside-login/aside-login.scss']
 })
 export class AsideRegister {
-  clickRegister() {
-    console.log('click register');
+  constructor(private registerService: RegisterService) {}
+
+  clickRegister(name: string, email: string, password: string, passwordConfirm: string) {
+    this.registerService.create({ name, email, password, role: 1 }).subscribe({
+      next: (res) => {
+        console.log('Register ok', res);
+      },
+      error: (err) => {
+        console.error('Register failed', err);
+        // Handle registration error (e.g., show error message)
+      }
+    });
   }
 }

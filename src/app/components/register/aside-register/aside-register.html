@@ -18,11 +18,11 @@
             </svg>
         </div>
         <h3>Register your account:</h3>
-        <input type="text" name="login-name" id="loginName" placeholder="Name *" #loginName>
-        <input type="email" name="login-email" id="loginEmail" placeholder="Email *" #loginEmail>
-        <input type="password" name="login-password" id="loginPassword" placeholder="Password *" #loginPassword>
-        <input type="password" name="login-password-confirm" id="loginPasswordConfirm" placeholder="Confirm Password *" #loginPasswordConfirm>
-        <button class="btn-submit-login" type="submit" (click)="clickRegister()">Register</button>
+        <input type="text" name="login-name" id="loginName" placeholder="Name *" #registerName>
+        <input type="email" name="login-email" id="loginEmail" placeholder="Email *" #registerEmail>
+        <input type="password" name="login-password" id="loginPassword" placeholder="Password *" #registerPassword>
+        <input type="password" name="login-password-confirm" id="loginPasswordConfirm" placeholder="Confirm Password *" #registerPasswordConfirm>
+        <button class="btn-submit-login" type="submit" (click)="clickRegister(registerName.value, registerEmail.value, registerPassword.value, registerPasswordConfirm.value)">Register</button>
         <span class="register-text">
             <a href="#">Login?</a>
         </span>

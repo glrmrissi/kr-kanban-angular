@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { LoginService, LoginResponse } from '../../../services/login.service';
+import { LoginService, LoginResponse } from '../../../services/login/login.service';
 
 @Component({
   selector: 'app-aside-login',
