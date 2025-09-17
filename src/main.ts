@@ -6,13 +6,9 @@ import { Register } from './app/components/register/register';
 import { Login } from './app/components/login/login';
 import { provideHttpClient } from '@angular/common/http';
 import { Home } from './app/components/home/home';
-const routes: Routes = [
-  { path: 'login', component: Login },
-  { path: 'register', component: Register },
-  { path: 'home', component: Home },
-  { path: '**', redirectTo: 'login' }
-];
+import { routes } from './app/app.routes';
+import { AuthGuard } from './app/guards/auth.guard';
 
 bootstrapApplication(App, {
-  providers: [ provideRouter(routes), provideHttpClient() ]
+  providers: [ provideRouter(routes), provideHttpClient(), AuthGuard ]
 });
