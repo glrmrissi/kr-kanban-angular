@@ -13,10 +13,10 @@ export class AsideRegister {
   clickRegister(name: string, email: string, password: string, passwordConfirm: string) {
     this.registerService.create({ name, email, password, role: 1 }).subscribe({
       next: (res) => {
-        console.log('Register ok', res);
+        console.log('Register ok');
       },
       error: (err) => {
-        console.error('Register failed', err);
+        console.error('Register failed');
         // Handle registration error (e.g., show error message)
       }
     });

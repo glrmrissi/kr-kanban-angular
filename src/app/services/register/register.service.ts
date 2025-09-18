@@ -21,6 +21,6 @@ export class RegisterService {
   constructor(private http: HttpClient) {}
 
   create(payload: RegisterRequest): Observable<RegisterResponse> {
-    return this.http.post<RegisterResponse>(this.apiUrl, payload);
+    return this.http.post<RegisterResponse>(`${this.apiUrl}`, payload);
   }
 }
