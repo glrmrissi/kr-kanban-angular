@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { KanbanContainerComponent } from "../home/kanban-container/kanban-container.component";
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [KanbanContainerComponent, KanbanContainerComponent],
   templateUrl: './home.html',
-  styleUrl: './home.scss'
+  styleUrls: ['./home.scss']
 })
 export class Home {
 
