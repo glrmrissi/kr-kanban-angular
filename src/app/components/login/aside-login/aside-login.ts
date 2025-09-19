@@ -23,8 +23,10 @@ export class AsideLogin {
   clickLogin(email: string, password: string) {
     this.loginService.login({ email, password }).subscribe({
       next: (res: LoginResponse) => {
-        this.authState.login(res.accessToken); // guarda no estado global
-        this.router.navigate(['/home']);
+        if(res.accessToken === localStorage.getItem('token')) {
+          this.authState.login(res.accessToken);
+          this.router.navigate(['/home']);
+        }
       },
       error: (err) => {
         console.error('Login failed', err);

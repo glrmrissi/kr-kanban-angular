@@ -1,17 +1,34 @@
+// TODO: Refactor AuthGuard to validate token with backend before allowing route activation
+
+
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { AuthStateService } from '../../auth/auth.service';
+import { CanActivate, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthGuard implements CanActivate {
-  constructor(private authState: AuthStateService, private router: Router) {}
+  constructor(private router: Router, private http: HttpClient) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (this.authState.getToken()) {
-      return true;
+  canActivate(): Promise<boolean> {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      this.router.navigate(['/login']);
+      return Promise.resolve(false);
     }
 
-    this.router.navigate(['/login']);
-    return false;
+    return this.http.get<{ valido: boolean }>('http://localhost:3000/auth/validar', {
+      headers: { Authorization: `Bearer ${token}` }
+    }).toPromise()
+      .then(res => {
+        if (res?.valido) return true;
+        this.router.navigate(['/login']);
+        return false;
+      })
+      .catch(() => {
+        this.router.navigate(['/login']);
+        return false;
+      });
   }
 }

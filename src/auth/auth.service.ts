@@ -2,9 +2,14 @@ import { Injectable, inject } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { LoginResponse, LoginService } from '../app/services/login/login.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthStateService {
+
+  constructor(private loginService: LoginService) {
+  }
   private platformId = inject(PLATFORM_ID);
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
   isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
