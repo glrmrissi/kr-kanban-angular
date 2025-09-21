@@ -17,7 +17,6 @@ export class AsideRegister {
       },
       error: (err) => {
         console.error('Register failed');
-        // Handle registration error (e.g., show error message)
       }
     });
   }
