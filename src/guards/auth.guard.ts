@@ -1,21 +1,25 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { CanActivate, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { AuthStateService } from '../auth/auth.service';
-import { AsideLogin } from '../app/components/login/aside-login/aside-login';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
-  constructor(private authState: AuthStateService, 
-    private router: Router,
-    private readonly asideLogin: AsideLogin
+  constructor(
+    private authService: AuthStateService,
+    private router: Router
   ) {}
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-    if (this.authState.getToken()) {
-      return true;
-    }
-
-    this.router.navigate(['/login']);
-    return false;
+  canActivate(): Observable<boolean> {
+    return this.authService.hasToken().pipe(
+      map(isValid => {
+        if (!isValid) {
+          this.router.navigate(['/login']);
+          return false;
+        }
+        return true;
+      })
+    );
   }
 }

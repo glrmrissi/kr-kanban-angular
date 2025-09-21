@@ -1,35 +1,29 @@
 import { Injectable, inject } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
-import { LoginResponse } from '../app/services/login/login.service';
-import { jwtDecode } from 'jwt-decode';
-
-interface JwtPayload {
-  exp: number; // tempo de expiração em "seconds since epoch"
-  sub: string; // id do usuário (se o backend enviar)
-  [key: string]: any; // outros dados que o backend enviar
-}
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthStateService {
+  constructor(private http: HttpClient,
+    private router: Router
+  ) { }
   private platformId = inject(PLATFORM_ID);
-  private isLoggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
-  isLoggedIn$: Observable<boolean> = this.isLoggedInSubject.asObservable();
 
   login(token: string) {
     if (isPlatformBrowser(this.platformId)) {
-      this.logout()
       localStorage.setItem('token', token);
+      this.router.navigate(['/home']);
     }
-    this.isLoggedInSubject.next(true);
   }
 
   logout() {
     if (isPlatformBrowser(this.platformId)) {
       localStorage.removeItem('token');
     }
-    this.isLoggedInSubject.next(false);
   }
 
   getToken(): string | null {
@@ -39,20 +33,22 @@ export class AuthStateService {
     return null;
   }
 
-  hasToken(): boolean {
-    console.log('Checking token validity...');
-    if (!isPlatformBrowser(this.platformId)) return false;
+  hasToken(): Observable<boolean> {
+    let token: string | null = null;
 
-    const token = localStorage.getItem('token');
-    if (!token) return false;
-
-    try {
-      const decoded = jwtDecode<JwtPayload>(token);
-      if (!decoded.exp) return false;
-
-      return true;
-    } catch (e) {
-      return false;
+    if (isPlatformBrowser(this.platformId)) {
+      token = localStorage.getItem('token');
+      if (!token) {
+        localStorage.removeItem('token');
+        return of(false);
+      }
     }
+    return this.http.post<{ valid: boolean }>(
+      'http://localhost:3000/auth/validate',
+      { token }
+    ).pipe(
+      map(response => response.valid),
+      catchError(() => of(false))
+    );
   }
 }
