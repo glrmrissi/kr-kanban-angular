@@ -4,7 +4,6 @@
         <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo"
             [cdkDropListConnectedTo]="[doneList, inProgressList, approvedList]" class="kanban-list"
             (cdkDropListDropped)="drop($event)">
-            <h3>drag items here!</h3>
             @for (item of todo; track item) {
             <div class="kanban-card" cdkDrag>{{item}}</div>
             }
@@ -15,7 +14,6 @@
         <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done"
             [cdkDropListConnectedTo]="[todoList, inProgressList, approvedList]" class="kanban-list"
             (cdkDropListDropped)="drop($event)">
-            <h3>drag items here!</h3>
             @for (item of done; track item) {
             <div class="kanban-card" cdkDrag>{{item}}</div>
             }
@@ -25,8 +23,7 @@
         <h2>InProgress</h2>
         <div cdkDropList #inProgressList="cdkDropList" [cdkDropListData]="inProgress"
             [cdkDropListConnectedTo]="[todoList, doneList, approvedList]" class="kanban-list"
-            (cdkDropListDropped)="drop($event)" height="10vh">
-            <h3>drag items here!</h3>
+            (cdkDropListDropped)="drop($event)">
             @for (item of inProgress; track item) {
             <div class="kanban-card" cdkDrag>{{item}}</div>
             }
@@ -37,7 +34,6 @@
         <div cdkDropList #approvedList="cdkDropList" [cdkDropListData]="approved"
             [cdkDropListConnectedTo]="[todoList, inProgressList, doneList]" class="kanban-list"
             (cdkDropListDropped)="drop($event)">
-            <h3>drag items here!</h3>
             @for (item of approved; track item) {
             <div class="kanban-card" cdkDrag>{{item}}</div>
             }
