@@ -1,4 +1,7 @@
 <aside class="auth-login">
+    <a class="btn-home" routerLink="/home">
+        <i class="bi bi-house"></i>
+    </a>
     <section class="labels-login-container">
         <div class="logo-container">
             <svg width="60" height="60" viewBox="0 0 148 148" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +23,8 @@
         <h3>Access your account:</h3>
         <input type="email" name="login-email" id="loginEmail" placeholder="Email" #loginEmail>
         <input type="password" name="login-password" id="loginPassword" placeholder="Password" #loginPassword>
-        <button class="btn-submit-login" type="submit"  (click)="clickLogin(loginEmail.value, loginPassword.value)">Login</button>
+        <button class="btn-submit-login" type="submit"
+            (click)="clickLogin(loginEmail.value, loginPassword.value)">Login</button>
         <span class="register-text">
             <a routerLink="/register">Register?</a>
         </span>

@@ -1,4 +1,7 @@
 .auth-login {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
     width: 450px;
     height: 100dvh;
     background-color: #323232;
@@ -46,11 +49,29 @@
     border-radius: 8px;
     background-color: #3D33D5;
     color: #fff;
+    cursor: pointer;
     &:hover {
         background-color: #2b22a8;
         transition: 0.3s background-color;
     }
+}
 
+.btn-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1f1f1f;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    margin: 0 32px;
+    &:hover {
+        background-color: #2b22a8;
+        transition: 0.3s background-color;
+    }
+    i {
+        color: #fff;
+    }
 }
 
 .register-text {
