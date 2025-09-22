@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { App } from './app/app';
 import { provideHttpClient } from '@angular/common/http';
 import { routes } from './app/app.routes';
-import { AuthGuard } from './app/guards/auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 bootstrapApplication(App, {
   providers: [ provideRouter(routes), provideHttpClient(), AuthGuard ]
