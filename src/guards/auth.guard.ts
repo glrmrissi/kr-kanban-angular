@@ -16,8 +16,10 @@ export class AuthGuard implements CanActivate {
       map(isValid => {
         if (!isValid) {
           this.router.navigate(['/login']);
+          console.log('No token found, redirecting to login.');
           return false;
         }
+        console.log('Token found, access granted.');
         return true;
       })
     );
