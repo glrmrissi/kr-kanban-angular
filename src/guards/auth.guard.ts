@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AuthStateService } from '../auth/auth.service';
+import { AuthStateService } from '../app/services/auth/auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
@@ -16,7 +16,6 @@ export class AuthGuard implements CanActivate {
       map(isValid => {
         if (!isValid) {
           this.router.navigate(['/login']);
-          console.log('No token found, redirecting to login.');
           return false;
         }
         console.log('Token found, access granted.');

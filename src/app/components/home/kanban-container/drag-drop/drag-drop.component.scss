@@ -30,8 +30,9 @@
     border-radius: 8px;
     padding: 12px;
     margin-bottom: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    user-select: none;
     cursor: grab;
+
     &:hover {
         background-color: #4a4444;
     }

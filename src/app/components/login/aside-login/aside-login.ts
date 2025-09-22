@@ -2,7 +2,7 @@ import { Component, Injectable } from '@angular/core';
 import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { LoginService, LoginResponse } from '../../../services/login/login.service';
-import { AuthStateService } from '../../../../auth/auth.service';
+import { AuthStateService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-aside-login',
