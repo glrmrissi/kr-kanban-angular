@@ -21,7 +21,6 @@ export class AsideLogin {
     private readonly router: Router
   ) { }
 
-
   clickLogin(email: string, password: string) {
     this.loginService.login({ email, password }).subscribe({
       next: (res: LoginResponse) => {
