@@ -1,5 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthStateService {
-  constructor(private http: HttpClient,
+  constructor(
+    private http: HttpClient,
     private router: Router
   ) { }
   private platformId = inject(PLATFORM_ID);

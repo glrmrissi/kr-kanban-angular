@@ -12,7 +12,6 @@ import { AuthStateService } from '../../../../auth/auth.service';
   styleUrls: ['./aside-login.scss']
 })
 
-@Injectable({ providedIn: 'root' })
 export class AsideLogin {
   errorMessage = '';
 
@@ -26,9 +25,10 @@ export class AsideLogin {
   clickLogin(email: string, password: string) {
     this.loginService.login({ email, password }).subscribe({
       next: (res: LoginResponse) => {
-        if(res.accessToken === localStorage.getItem('token')) {
+        if(res.accessToken) {
           this.authState.login(res.accessToken);
           this.router.navigate(['/home']);
+          console.log('Already logged in');
         }
       },
       error: (err) => {
