@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { DragDropComponent } from './drag-drop/drag-drop.component';
 
 @Component({
   selector: 'app-kanban-container',
   standalone: true,
-  imports: [],
+  imports: [DragDropComponent],
   templateUrl: './kanban-container.component.html',
   styleUrl: './kanban-container.component.scss'
 })
