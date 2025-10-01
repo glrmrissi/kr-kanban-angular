@@ -1,4 +1,4 @@
-## Login and register back
+## Login and register front
 
 In theory, it was supposed to be a kanban, but the way I structured the front end wasn’t good. So it just turned into login and register.
 
