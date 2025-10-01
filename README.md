@@ -1,4 +1,8 @@
-# MyNewApp
+## Login and register back
+
+In theory, it was supposed to be a kanban, but the way I structured the front end wasn’t good. So it just turned into login and register.
+
+This project is linked to this repository https://github.com/glrmrissi/login_and_register_back
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.0.
 
